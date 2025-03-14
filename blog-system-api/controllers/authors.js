@@ -28,10 +28,10 @@ exports.get_all_authors = async (req,res) =>{
 
 exports.update_author_profile_picture = async (req,res) =>{
     try{
-        console.log("Request body:", req.body);
         const {id, profile_picture} = req.body
         const query = `update author set profile_picture = $1 where id = $2`
-        await connection.query(query,[profile_picture,id])
+        const result = await connection.query(query,[profile_picture,id])
+        console.log(result)
         res.status(200).json({ message: "Profile picture updated successfully" });
     }
     catch(error){
