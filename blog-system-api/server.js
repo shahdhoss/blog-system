@@ -1,0 +1,10 @@
+const express = require("express")
+const app = express()
+const {get_all_authors,delete_author,update_author_profile_picture,add_author} = require("./controllers/authors")
+app.use(express.json())
+
+app.get('/',get_all_authors)
+app.post('/author', add_author)
+app.put('/author',update_author_profile_picture)
+app.delete('/author/:id',delete_author)
+app.listen(5000)
